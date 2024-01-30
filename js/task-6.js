@@ -11,17 +11,13 @@ function getRandomHexColor() {
 }
 
 function createBoxes(amount) {
-  // let boxesColection = ''
   for (let i = 0; i < amount; i++) {
-    // boxesColection += `<div style="width: ${30 + 10 * i}px; height: ${(30 + 10 * i)}px; background-color: ${getRandomHexColor()};"></div>`;
     const divBox = document.createElement('div');
     divBox.style.width = `${(30 + 10 * i)}px`;
     divBox.style.height = `${(30 + 10 * i)}px`;
     divBox.style.backgroundColor = getRandomHexColor();
     divBoxes.append(divBox);
   }
-  // divBoxes.insertAdjacentHTML('afterbegin', boxesColection);
-  // console.log(boxesColection);
 }
 
 function destroyBoxes() {
@@ -34,8 +30,10 @@ create.addEventListener('click', () => {
   if (inputValue > 0 && inputValue <= 100) {
     destroyBoxes();
     createBoxes(inputValue);
-    document.querySelector('#controls input').value = '';
-}
+  } else {
+    alert('Enter a value from 1 to 100 inclusive!');
+  }
+  document.querySelector('#controls input').value = '';
 })
 
 destroy.addEventListener('click', destroyBoxes);
